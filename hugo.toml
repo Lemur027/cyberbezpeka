@@ -1,0 +1,23 @@
+baseURL = 'https://твоя-майбутня-адреса.com/'
+languageCode = 'uk-ua'
+title = 'Кібербезпека UA'
+theme = 'PaperMod'
+
+[params]
+  defaultTheme = 'auto' # Тема підлаштовуватиметься під систему користувача (світла/темна)
+  ShowPostNavLinks = true
+  
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[menu]
+  [[menu.main]]
+    identifier = "tags"
+    name = "Фільтри (Теги)"
+    url = "/tags/"
+    weight = 10
+	
+[params.cover]
+hiddenInList = false
+hiddenInSingle = false
