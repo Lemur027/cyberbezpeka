@@ -1,14 +1,31 @@
 {{- with .cxt}} {{/* Apply proper context from dict */}}
-{{- if (and .Params.cover.image (not $.isHidden)) }}
+{{- $coverHidden := $.isHidden | default false }}
+{{- $coverImage := .Params.cover.image }}
+{{- $coverAlt := (.Params.cover.alt | default .Params.cover.caption | plainify) | default "" }}
+{{- $hasCover := false }}
+
+{{- if $coverImage }}
+  {{- /* Use cover image from frontmatter */}}
+  {{- $hasCover = true }}
+{{- else if not $.IsSingle }}
+  {{- /* Try to extract first image from post content for list views */}}
+  {{- $imgTag := index (findRE "<img[^>]+src=\"([^\"]+)\"" .Content 1) 0 }}
+  {{- if $imgTag }}
+    {{- $coverImage = replaceRE "<img[^>]+src=\"([^\"]+)\"" "$1" $imgTag }}
+    {{- $hasCover = true }}
+  {{- end }}
+{{- end }}
+
+{{- if and $hasCover (not $coverHidden) }}
 <figure class="entry-cover">
     {{- $loading := cond $.IsSingle "eager" "lazy" }}
     {{- $addLink := (and site.Params.cover.linkFullImages $.IsSingle) }}
     {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
-    {{- $alt := (.Params.cover.alt | default .Params.cover.caption | plainify) }}
+    {{- $alt := $coverAlt }}
     {{- $responsiveImages := (.Params.cover.responsiveImages | default site.Params.cover.responsiveImages) | default true }}
 
-    {{- $pageBundleCover := (.Resources.ByType "image").GetMatch (printf "*%s*" (.Params.cover.image)) }}
-    {{- $globalResourcesCover := (resources.ByType "image").GetMatch (printf "*%s*" (.Params.cover.image)) }}
+    {{- $pageBundleCover := (.Resources.ByType "image").GetMatch (printf "*%s*" $coverImage) }}
+    {{- $globalResourcesCover := (resources.ByType "image").GetMatch (printf "*%s*" $coverImage) }}
     {{- $cover := (or $pageBundleCover $globalResourcesCover)}}
     {{- /* We are not using the .Param.cover.relative to decide the location of image */}}
     {{- /* If we have the image in pageBundle or globalResources we can process the image */}}
@@ -19,7 +36,7 @@
         {{- $processableFormats = $processableFormats | append "webp" -}}
     {{- end -}}
 
-    {{- $imgdl := strings.TrimPrefix "/" (.Params.cover.image) | absURL }}
+    {{- $imgdl := strings.TrimPrefix "/" $coverImage | absURL }}
     {{- if $cover -}}
         {{- $imgdl = $cover.Permalink }}
     {{- end -}}
@@ -29,11 +46,10 @@
     {{- end }}
 
     {{- if $cover -}}
-        {{/* i.e it is present in page bundle */}}
         {{- if (and (in $processableFormats $cover.MediaType.SubType) ($responsiveImages) (eq $prod true)) }}
             <img loading="{{$loading}}"
                 srcset='{{- range $size := $sizes -}}
-                            {{- if (ge $cover.Width $size) }}
+                            {{- if (ge $cover.Width $size) -}}
                                 {{- printf "%s %s" (($cover.Resize (printf "%sx" $size)).Permalink) (printf "%sw," $size) }}
                             {{- end }}
                         {{- end }}
@@ -54,7 +70,6 @@
         </a>
     {{- end -}}
 
-    {{- /*  Display Caption  */}}
     {{- if $.IsSingle }}
         {{ with .Params.cover.caption -}}
             <figcaption>{{ . | markdownify }}</figcaption>
