@@ -1,19 +1,25 @@
 <script>
 (function() {
-  // Open all external links in new tab
-  var links = document.querySelectorAll('a[href]');
-  var currentHost = location.hostname;
-  for (var i = 0; i < links.length; i++) {
-    var href = links[i].getAttribute('href');
-    if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
-      try {
-        var linkHost = new URL(href).hostname;
-        if (linkHost !== currentHost) {
-          links[i].setAttribute('target', '_blank');
-          links[i].setAttribute('rel', 'noopener noreferrer');
-        }
-      } catch(e) {}
+  function fixExternalLinks() {
+    var links = document.querySelectorAll('a[href]');
+    var currentHost = location.hostname.toLowerCase();
+    for (var i = 0; i < links.length; i++) {
+      var href = links[i].getAttribute('href');
+      if (!href) continue;
+      if (href.indexOf('://') === -1) continue;
+      var linkHost = href.split('/')[2];
+      if (!linkHost) continue;
+      linkHost = linkHost.toLowerCase();
+      if (linkHost !== currentHost) {
+        links[i].setAttribute('target', '_blank');
+        links[i].setAttribute('rel', 'noopener noreferrer');
+      }
     }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fixExternalLinks);
+  } else {
+    fixExternalLinks();
   }
 })();
 </script>
