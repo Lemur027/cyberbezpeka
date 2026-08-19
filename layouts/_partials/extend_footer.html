@@ -1,0 +1,19 @@
+<script>
+(function() {
+  // Open all external links in new tab
+  var links = document.querySelectorAll('a[href]');
+  var currentHost = location.hostname;
+  for (var i = 0; i < links.length; i++) {
+    var href = links[i].getAttribute('href');
+    if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
+      try {
+        var linkHost = new URL(href).hostname;
+        if (linkHost !== currentHost) {
+          links[i].setAttribute('target', '_blank');
+          links[i].setAttribute('rel', 'noopener noreferrer');
+        }
+      } catch(e) {}
+    }
+  }
+})();
+</script>
