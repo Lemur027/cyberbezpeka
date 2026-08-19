@@ -69,3 +69,8 @@
         padding: 0 4px;
     }
 }
+
+/* Show cover images on tag/category pages (PaperMod hides them by default) */
+.tag-entry .entry-cover {
+    display: block;
+}
