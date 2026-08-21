@@ -3,9 +3,18 @@ languageCode = 'uk-ua'
 title = 'Кібербезпека UA'
 theme = 'PaperMod'
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [params]
   defaultTheme = 'auto' # Тема підлаштовуватиметься під систему користувача (світла/темна)
   ShowPostNavLinks = true
+  
+  [params.search]
+    enable = true
+    placeholder = "Пошук..."
+    mode = "full"
+    fuseOpts = { threshold = 0.4, distance = 100, ignoreLocation = true }
   
 [taxonomies]
   tag = "tags"
@@ -13,6 +22,12 @@ theme = 'PaperMod'
 
 [menu]
   [[menu.main]]
+    identifier = "search"
+    name = "🔍 Пошук"
+    url = "/search/"
+    weight = 5
+    
+[[menu.main]]
     identifier = "tags"
     name = "Фільтри (Теги)"
     url = "/tags/"

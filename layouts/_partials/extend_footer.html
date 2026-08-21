@@ -1,5 +1,6 @@
 <script>
 (function() {
+  // ── External links fix ──
   function fixExternalLinks() {
     var links = document.querySelectorAll('a[href]');
     var currentHost = location.hostname.toLowerCase();
@@ -16,10 +17,199 @@
       }
     }
   }
+
+  // ── Header search ──
+  function initHeaderSearch() {
+    var input = document.getElementById('headerSearchInput');
+    var results = document.getElementById('headerSearchResults');
+    if (!input || !results) return;
+
+    var searchData = null;
+    var fuse = null;
+    var searchBox = document.getElementById('headerSearch');
+
+    // Load Fuse.js from CDN
+    function loadFuse(callback) {
+      if (typeof Fuse !== 'undefined') {
+        callback();
+        return;
+      }
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js';
+      script.onload = callback;
+      script.onerror = function() {
+        // Fallback: simple includes search
+        simpleSearch = true;
+        callback();
+      };
+      document.head.appendChild(script);
+    }
+
+    var simpleSearch = false;
+
+    // Load search index
+    function loadSearchIndex() {
+      var baseURL = '{{ "" | absLangURL }}';
+      if (baseURL.endsWith('/')) baseURL = baseURL.slice(0, -1);
+      var url = baseURL + '/index.json';
+      return fetch(url).then(function(r) { return r.json(); });
+    }
+
+    function highlightText(text, query) {
+      if (!query || !text) return text;
+      var words = query.trim().split(/\s+/).filter(Boolean);
+      var result = String(text);
+      words.forEach(function(word) {
+        var re = new RegExp('(' + word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+        result = result.replace(re, '<match>$1</match>');
+      });
+      return result;
+    }
+
+    function truncate(text, maxLen) {
+      if (!text) return '';
+      if (text.length <= maxLen) return text;
+      return text.substring(0, maxLen) + '…';
+    }
+
+    function doSimpleSearch(query, data) {
+      if (!query) return [];
+      var words = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      if (words.length === 0) return [];
+      return data.filter(function(item) {
+        var title = (item.title || '').toLowerCase();
+        var content = (item.content || '').toLowerCase();
+        var summary = (item.summary || '').toLowerCase();
+        return words.every(function(w) {
+          return title.indexOf(w) !== -1 || summary.indexOf(w) !== -1;
+        });
+      }).slice(0, 8);
+    }
+
+    function renderResults(query, data) {
+      if (!query || !data) {
+        results.classList.remove('active');
+        results.innerHTML = '';
+        return;
+      }
+
+      var matches;
+      if (simpleSearch || !fuse) {
+        matches = doSimpleSearch(query, data);
+      } else {
+        matches = fuse.search(query).map(function(r) { return r.item; }).slice(0, 8);
+      }
+
+      if (matches.length === 0) {
+        results.innerHTML = '<div class="header-search-no-results">Нічого не знайдено</div>';
+        results.classList.add('active');
+        return;
+      }
+
+      var html = '';
+      matches.forEach(function(item) {
+        var title = highlightText(item.title, query);
+        var summary = truncate(item.summary, 100);
+        summary = highlightText(summary, query);
+        html += '<a class="header-search-result" href="' + item.permalink + '">' +
+          '<span class="result-title">' + title + '</span>' +
+          '<span class="result-summary">' + summary + '</span>' +
+        '</a>';
+      });
+      results.innerHTML = html;
+      results.classList.add('active');
+    }
+
+    function init() {
+      loadFuse(function() {
+        loadSearchIndex().then(function(data) {
+          searchData = data;
+          if (!simpleSearch) {
+            fuse = new Fuse(data, {
+              keys: ['title', 'summary', 'content'],
+              threshold: 0.4,
+              distance: 100,
+              ignoreLocation: true,
+              shouldSort: true
+            });
+          }
+
+          // Debounced input handler
+          var debounceTimer;
+          input.addEventListener('input', function() {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(function() {
+              renderResults(input.value.trim(), searchData);
+            }, 200);
+          });
+
+          // Keyboard navigation
+          input.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+              results.classList.remove('active');
+              input.blur();
+              return;
+            }
+            var items = results.querySelectorAll('.header-search-result');
+            if (items.length === 0) return;
+
+            var currentIndex = -1;
+            items.forEach(function(el, i) {
+              if (el === document.activeElement) currentIndex = i;
+            });
+
+            if (e.key === 'ArrowDown') {
+              e.preventDefault();
+              var next = (currentIndex + 1) % items.length;
+              items[next].focus();
+            } else if (e.key === 'ArrowUp') {
+              e.preventDefault();
+              var prev = currentIndex > 0 ? currentIndex - 1 : items.length - 1;
+              items[prev].focus();
+            } else if (e.key === 'Enter' && currentIndex >= 0) {
+              e.preventDefault();
+              items[currentIndex].click();
+            }
+          });
+
+          // Close on click outside
+          document.addEventListener('click', function(e) {
+            if (!searchBox.contains(e.target)) {
+              results.classList.remove('active');
+            }
+          });
+
+          // Focus input on Ctrl+K or / (not in input)
+          document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+              e.preventDefault();
+              input.focus();
+              input.select();
+            }
+            if (e.key === '/' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+              e.preventDefault();
+              input.focus();
+              input.select();
+            }
+          });
+        }).catch(function(err) {
+          console.error('Header search: failed to load index.json', err);
+        });
+      });
+    }
+
+    init();
+  }
+
+  // ── Boot ──
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', fixExternalLinks);
+    document.addEventListener('DOMContentLoaded', function() {
+      fixExternalLinks();
+      initHeaderSearch();
+    });
   } else {
     fixExternalLinks();
+    initHeaderSearch();
   }
 })();
 </script>
