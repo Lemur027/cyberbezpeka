@@ -6,8 +6,8 @@
 
 /* Balance for first entry - reduce excessive vertical space */
 .first-entry {
-    min-height: 200px;
-    margin: var(--gap) 0 var(--gap) 0;
+    min-height: 50px;
+    margin: var(--gap) 0;
 }
 
 /* Reduce entry cover margin */
