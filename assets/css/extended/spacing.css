@@ -1,0 +1,55 @@
+/* Reduced spacing - override PaperMod defaults */
+:root {
+    --gap: 16px;
+    --content-gap: 16px;
+}
+
+/* Balance for first entry - reduce excessive vertical space */
+.first-entry {
+    min-height: 200px;
+    margin: var(--gap) 0 var(--gap) 0;
+}
+
+/* Reduce entry cover margin */
+.entry-cover {
+    margin-bottom: 12px;
+}
+
+/* Reduce padding inside post cards */
+.post-entry {
+    padding: var(--gap);
+}
+
+/* Reduce main content padding */
+.main {
+    padding: 12px var(--gap);
+}
+
+/* Reduce page header margin */
+.page-header,
+.post-header {
+    margin: 16px auto var(--content-gap) auto;
+}
+
+/* Reduce post content spacing */
+.post-content {
+    margin: 20px 0;
+}
+
+/* Reduce pagination padding */
+.page-nums {
+    padding: 8px 0;
+}
+
+/* Reduce post-footer spacing */
+.post-footer {
+    margin-top: 16px;
+}
+
+/* Media query spacing */
+@media (max-width: 768px) {
+    :root {
+        --gap: 12px;
+        --content-gap: 12px;
+    }
+}
