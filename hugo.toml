@@ -9,7 +9,10 @@ theme = 'PaperMod'
 [params]
   defaultTheme = 'auto' # Тема підлаштовуватиметься під систему користувача (світла/темна)
   ShowPostNavLinks = true
-  
+
+  [params.analytics.google]
+    id = "G-W2ME3VSWFQ"
+
   [params.search]
     enable = true
     placeholder = "Пошук..."
