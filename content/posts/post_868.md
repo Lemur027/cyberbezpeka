@@ -17,4 +17,4 @@ video: "/video_files/тг1 (5).mp4"
 
 [Meteoblue](https://www.meteoblue.com/uk/weather/maps/prydniprovs%E2%80%99ka-vysochyna_ukraine_696316#coords=4/49/32&map=windAnimation~rainbow~auto~10%20m%20above%20gnd~none) - картографічний інструмент метеоданих. Допоможе швидко визначити напрям та швидкість вітру, розраховує ймовірність опадів та прогнозує погодні умови. Також наявний радар.
 
-**Ще одну підбірку залишав тут:** https://t.me/cybersecurity_ua/850
+**Ще одну підбірку залишав тут:** /posts/post_3450/

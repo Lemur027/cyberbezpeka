@@ -8,10 +8,10 @@ cover:
 
 🔵** Підбірка швидкісних Google-лайфаків:
 
-**[▪️Як швидко знайти фільм з Тік Ток ](https://t.me/cybersecurity_ua/36) 
+**[▪️Як швидко знайти фільм з Тік Ток ](/posts/post_3450/) 
 
 [▪️Як швидко скопіювати текст з картинки чи відео 
 
-](https://t.me/cybersecurity_ua/37)[▪️Як швидко дізнатися реальні ціни на товар
+](/posts/post_3450/)[▪️Як швидко дізнатися реальні ціни на товар
 
-](https://t.me/cybersecurity_ua/52)[▪️Як пришвидшити роботу Google та YouTube](https://t.me/cybersecurity_ua/29)
+](/posts/post_3450/)[▪️Як пришвидшити роботу Google та YouTube](/posts/post_3450/)

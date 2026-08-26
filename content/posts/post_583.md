@@ -13,5 +13,5 @@ video: "/video_files/тг (8) (1).mp4"
 
 [Satellitemap](https://satellitemap.space/?constellation=GPS), [In the Sky](https://in-the-sky.org/satmap_worldmap.php?year=2023&month=7&day=13)  - два сервіси для відслідковування всіх штучних супутників навколо Землі в реальному часі. В т.ч всі супутники Маска.
 
-Більше сервісів зі супутниковими знімками залишав тут: https://t.me/cybersecurity_ua/415**
+Більше сервісів зі супутниковими знімками залишав тут: /posts/post_3450/
 **

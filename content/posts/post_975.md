@@ -8,7 +8,7 @@ cover:
 
 🥷🏻 **Пошук та перевірка інформації з відкритих джерел**
 
-[Analyst Research Tools](https://analystresearchtools.com/) - конструктор пошукових запитів за відкритими джерелами по типу [Namint](https://t.me/cybersecurity_ua/833), тільки тут дещо інший набір ресурсів, в т.ч: Instagram, TikTok, Facebook, LinkedIn, пошта, юзернейм, архів сайтів, домени тощо.
+[Analyst Research Tools](https://analystresearchtools.com/) - конструктор пошукових запитів за відкритими джерелами по типу [Namint](/posts/post_3450/), тільки тут дещо інший набір ресурсів, в т.ч: Instagram, TikTok, Facebook, LinkedIn, пошта, юзернейм, архів сайтів, домени тощо.
 
 Також тут зібрана [колекція інструментів](https://analystresearchtools.com/resources) для перевірки та аналізу соціальних мереж та інших ресурсів, в т.ч. Телеграм, Твітер, Reddit, ВК, YouTube, SnapChat, Discord та інших. Так то інструменті досить багато, на додачу відкриті реєстри, картографічні ресурси тощо. 
 

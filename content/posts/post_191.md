@@ -8,10 +8,10 @@ cover:
 
 🔴 **Про** **Google, TikTok, Telegram та Microsoft
 
-🗨 Google** та конфіденційність[ тут](https://t.me/cybersecurity_ua/105). Голосовий помічник та персоналізація реклами [тут](https://t.me/cybersecurity_ua/117). Безпека в PlayMarket [тут](https://t.me/cybersecurity_ua/124).
+🗨 Google** та конфіденційність[ тут](/posts/post_3450/). Голосовий помічник та персоналізація реклами [тут](/posts/post_3450/). Безпека в PlayMarket [тут](/posts/post_3450/).
 
-🗨** TikTok** і збір інформації [тут](https://t.me/cybersecurity_ua/117). Політика та цензура в ТікТок [тут](https://t.me/cybersecurity_ua/125).
+🗨** TikTok** і збір інформації [тут](/posts/post_3450/). Політика та цензура в ТікТок [тут](/posts/post_3450/).
 
-🗨** Telegram**, його надійність та виявлені вразливоссті [тут](https://t.me/cybersecurity_ua/166). Сікрет чати, їх надійність та конфіденційність [тут](https://t.me/cybersecurity_ua/109).
+🗨** Telegram**, його надійність та виявлені вразливоссті [тут](/posts/post_3450/). Сікрет чати, їх надійність та конфіденційність [тут](/posts/post_3450/).
 
-🗨 **Microsoft** - збір та продаж даних [тут](https://t.me/cybersecurity_ua/139). Голосовий помічник для Windows [тут](https://t.me/cybersecurity_ua/142).
+🗨 **Microsoft** - збір та продаж даних [тут](/posts/post_3450/). Голосовий помічник для Windows [тут](/posts/post_3450/).

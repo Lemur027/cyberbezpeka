@@ -12,7 +12,7 @@ cover:
 
 [Set Password](https://chrome.google.com/webstore/detail/set-password-for-your-bro/cjmjgijhapgicbhmniemjkjeaedanank) - встановлює пароль при відкритті вашого браузера. Актуально, якщо вашим ПК користується хтось крім вас.
 
-[Sponsor Block ](https://t.me/cybersecurity_ua/99)- розширення Google для пропуску спонсорських (рекламних) сегментів на відео в YouTube.
+[Sponsor Block ](/posts/post_3450/)- розширення Google для пропуску спонсорських (рекламних) сегментів на відео в YouTube.
 
 [Clear Cache](https://chrome.google.com/webstore/detail/clear-cache/cppjkneekbjaeellbfkmgnhonkkjfpdn?hl=en-US) - розширення для Google, яке очищує кеш, кукі та історію переглядів одним кліком.
 

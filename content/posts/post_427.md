@@ -15,6 +15,6 @@ video: "/video_files/тг (9).mp4"
 
 [Thing Translator ](https://experiments.withgoogle.com/thing-translator)- перекладач від Google, який розпізнає сфотографований вами об'єкт, перекладає та озвучує його на потрібну вам мову. 
 
-Також тут залишав поради по оптимізації Chrome - https://t.me/cybersecurity_ua/181**
+Також тут залишав поради по оптимізації Chrome - /posts/post_3450/
 
 **

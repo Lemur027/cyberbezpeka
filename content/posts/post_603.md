@@ -14,4 +14,4 @@ cover:
 
 [SIFT Workstation](https://www.sans.org/tools/sift-workstation/) - колекція безкоштовних open source інструментів для вивчення комп'ютерної криміналістики. Як аналізувати Windows, де які артефакти шукати, мобільна криміналістика для Android та IOS. Ще один ресурс, [Hacker101](https://www.hacker101.com/) - безкоштовний курс лекцій з веб-безпеки. 
 
-Також добірку ігор/симуляторів для OSINT залишав тут: https://t.me/cybersecurity_ua/371
+Також добірку ігор/симуляторів для OSINT залишав тут: /posts/post_3450/

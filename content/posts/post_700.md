@@ -18,5 +18,5 @@ cover:
 
 [Forensically](https://29a.ch/photo-forensics/#forensic-magnifier), [Maver](https://mever.iti.gr/forensics/index.html) - комплексні інструменти для перевірки зображення на наявність слідів редагування. Коректно працюють тільки з оригіналами зображень.
 
-Більше сервісів залишав тут: https://t.me/cybersecurity_ua/420**
+Більше сервісів залишав тут: /posts/post_3450/
 **
