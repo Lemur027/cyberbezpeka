@@ -49,9 +49,7 @@
 
     // Load search index
     function loadSearchIndex() {
-      var baseURL = '{{ "" | absLangURL }}';
-      if (baseURL.endsWith('/')) baseURL = baseURL.slice(0, -1);
-      var url = baseURL + '/index.json';
+      var url = '/index.json';
       return fetch(url).then(function(r) { return r.json(); });
     }
 
